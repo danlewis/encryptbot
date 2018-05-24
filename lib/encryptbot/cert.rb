@@ -3,6 +3,7 @@ require "acme-client"
 require "encryptbot/heroku"
 require "encryptbot/exceptions"
 require "encryptbot/slack"
+require "resolv"
 
 module Encryptbot
   class Cert
@@ -88,17 +89,17 @@ module Encryptbot
       Encryptbot::Heroku.new.add_certificate(order.certificate, private_key)
     end
 
-  end
-
-  # Check if TXT value has been set correctly
-  def ready_for_challenge(domain, dns_challenge)
-    record = "#{dns_challenge.record_name}.#{domain}"
-    challenge_value = dns_challenge.record_content
-    txt_value = Resolv::DNS.open do |dns|
-      records = dns.getresources(record, Resolv::DNS::Resource::IN::TXT);
-      records.empty? ? nil : records.map(&:data).join(" ")
+    # Check if TXT value has been set correctly
+    def ready_for_challenge(domain, dns_challenge)
+      record = "#{dns_challenge.record_name}.#{domain}"
+      challenge_value = dns_challenge.record_content
+      txt_value = Resolv::DNS.open do |dns|
+        records = dns.getresources(record, Resolv::DNS::Resource::IN::TXT);
+        records.empty? ? nil : records.map(&:data).join(" ")
+      end
+      txt_value == challenge_value
     end
-    txt_value == challenge_value
+
   end
 
 end

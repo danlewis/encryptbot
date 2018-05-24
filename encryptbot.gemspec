@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "encryptbot/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "Encryptbot"
+  spec.name          = "encryptbot"
   spec.version       = Encryptbot::VERSION
   spec.authors       = ["danlewis"]
   spec.email         = [""]
