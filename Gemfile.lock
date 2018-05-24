@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    encryptbot (0.1.0)
+    Encryptbot (0.1.0)
       acme-client
       faraday
       platform-api
@@ -34,8 +34,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  Encryptbot!
   bundler (~> 1.16)
-  encryptbot!
   rake (~> 10.0)
 
 BUNDLED WITH

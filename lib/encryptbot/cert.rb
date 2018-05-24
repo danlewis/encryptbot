@@ -18,7 +18,7 @@ module Encryptbot
 
     # Add certificate
     def add
-      if unless Encryptbot.configuration.valid?
+      unless Encryptbot.configuration.valid?
         raise Encryptbot::Error::SetupError, "Encryptbot is configured incorrectly. Check all required variables have been set."
       end
 
@@ -100,4 +100,5 @@ module Encryptbot
     end
     txt_value == challenge_value
   end
+
 end
