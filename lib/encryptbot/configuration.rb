@@ -3,6 +3,8 @@ module Encryptbot
     attr_accessor :heroku_app, :heroku_token,
     :cloudflare_api_key, :cloudflare_email,
     :dyn_customer_name, :dyn_username, :dyn_password,
+    :route53_hosted_zone_id, :route53_acme_record_name,
+    :route53_access_key_id, :route53_secret_access_key,
     :acme_email, :domains, :test_mode,
     :slack_webhook, :slack_bot_username
 
