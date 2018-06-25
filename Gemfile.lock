@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    encryptbot (0.1.1)
+    encryptbot (0.1.2)
       acme-client
       aws-sdk-route53
       faraday
