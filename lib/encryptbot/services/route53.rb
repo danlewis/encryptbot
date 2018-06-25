@@ -26,7 +26,7 @@ module Encryptbot
               changes: [
                 action: "UPSERT",
                 resource_record_set: {
-                  name: @aws_acme_record_name,
+                  name: @acme_name,
                   resource_records: [
                     {
                       value: "\"#{@dns_entry[:content]}\"",
@@ -46,7 +46,7 @@ module Encryptbot
             sleep(10)
             change_status = @client.get_change({id: change_id}).change_info.status
           end
-          change_status == "NSYNC"
+          change_status == "INSYNC"
 
         rescue => e
           raise Encryptbot::Error::Route53DNSError, e
