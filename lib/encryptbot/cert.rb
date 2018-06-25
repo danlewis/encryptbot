@@ -47,6 +47,8 @@ module Encryptbot
           content: dns_challenge.record_content
         }
         case @domain_list.detect{|t| t[:domain].gsub("*.", "") == domain }[:service]
+        when "route53"
+          Encryptbot::Services::Route53.new(domain, dns_entry).add_challenge
         when "cloudflare"
           Encryptbot::Services::Cloudflare.new(domain, dns_entry).add_challenge
         when "dyn"

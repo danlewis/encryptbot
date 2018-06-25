@@ -14,6 +14,10 @@ module Encryptbot
       @dyn_customer_name = nil
       @dyn_username = nil
       @dyn_password = nil
+      @route53_hosted_zone_id = nil
+      @route53_acme_record_name = nil
+      @route53_access_key_id = nil
+      @route53_secret_access_key = nil
       @acme_email = nil
       @slack_webhook = nil
       @slack_bot_username = "encryptbot"
@@ -23,7 +27,7 @@ module Encryptbot
 
     def valid?
       heroku_app && heroku_token && acme_email && domains.any? &&
-      (cloudflare_api_key || dyn_customer_name)
+      (cloudflare_api_key || dyn_customer_name || route53_api_key)
     end
 
   end

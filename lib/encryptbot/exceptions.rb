@@ -20,6 +20,9 @@ module Encryptbot
     class CloudflareDNSError < EncryptbotError; end
     # Exception raised when adding TXT record to Dyn
     class DynDNSError < EncryptbotError; end
+    # Exception raised when route 53 fails to update
+    class Route53DNSError < EncryptbotError; end
+    # Exception raised when unknown error
     class UnknownServiceError < EncryptbotError; end
     # Exception raised as order was failed - this happens when the DNS Challenge failed
     class InvalidOrderError < EncryptbotError; end

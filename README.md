@@ -1,11 +1,11 @@
 # Encryptbot
 
-Encryptbot creates and renews your Lets Encrypt SSL certificate on Heroku allowing for multiple wildcards.
+Encryptbot creates and renews your Let's Encrypt SSL certificate on Heroku allowing for multiple wildcards.
 
 The gem will:
 
-- Create Lets Encrypt
-- Add Lets Encrypt DNS Challenge TXT records to your DNS provider (cloudflare and Dyn supported)
+- Create Let's Encrypt
+- Add Let's Encrypt DNS Challenge TXT records to your DNS provider (Cloudflare and Dyn supported)
 - Add certificate to your Heroku SNI endpoint
 - Send Slack notifications if the process fails.
 
@@ -42,6 +42,10 @@ Encryptbot.configure do |config|
   config.dyn_password = "dyn_password"
   config.slack_webhook = "slack_webhook_url"
   config.slack_bot_username = "name_for_slack_bot"
+  config.route53_hosted_zone_id = "Z123456"
+  config.route53_acme_record_name = "_acme-challenge.acme.domain.com"
+  config.route53_access_key_id = "aws_api_key"
+  config.route53_secret_access_key = "aws_api_secret"
   config.domains = [
     {domain: "*.domain1.com", service: "cloudflare"},
     {domain: "*.domain2.com", service: "dyn"},

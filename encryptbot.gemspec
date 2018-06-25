@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["danlewis"]
   spec.email         = [""]
 
-  spec.summary       = %q{Manage Lets Encrypt Wildcard certs to heroku}
-  spec.description   = %q{Manage Lets Encrypt Wildcard certs to heroku}
-  spec.homepage      = ""
+  spec.summary       = %q{Manage Let's Encrypt wildcard certificates on Heroku}
+  spec.description   = %q{Manage Let's Encrypt wildcard certificates on Heroku}
+  spec.homepage      = "https://github.com/danlewis/encryptbot"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "platform-api"
   spec.add_dependency "faraday"
   spec.add_dependency "slack-notifier"
+  spec.add_dependency "aws-sdk-route53"
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
 end
