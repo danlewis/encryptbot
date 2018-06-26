@@ -2,7 +2,7 @@ require "platform-api"
 require "acme-client"
 require "encryptbot/heroku"
 require "encryptbot/exceptions"
-require "encryptbot/slack"
+require "encryptbot/slacker"
 require "resolv"
 
 module Encryptbot

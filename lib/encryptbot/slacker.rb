@@ -1,5 +1,7 @@
+require "slack-notifier"
+
 module Encryptbot
-  class Slack
+  class Slacker
 
     def self.post_message(message)
       unless Encryptbot.configuration.slack_webhook.nil?
