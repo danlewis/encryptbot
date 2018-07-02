@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    encryptbot (0.1.4)
+    encryptbot (0.1.5)
       acme-client
       aws-sdk-route53
       faraday
@@ -15,15 +15,15 @@ GEM
       faraday (~> 0.9, >= 0.9.1)
     aws-eventstream (1.0.1)
     aws-partitions (1.94.0)
-    aws-sdk-core (3.21.3)
+    aws-sdk-core (3.22.1)
       aws-eventstream (~> 1.0)
       aws-partitions (~> 1.0)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-route53 (1.9.0)
+    aws-sdk-route53 (1.10.0)
       aws-sdk-core (~> 3)
       aws-sigv4 (~> 1.0)
-    aws-sigv4 (1.0.2)
+    aws-sigv4 (1.0.3)
     erubis (2.7.0)
     excon (0.62.0)
     faraday (0.15.2)
