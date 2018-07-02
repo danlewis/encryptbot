@@ -29,7 +29,7 @@ module Encryptbot
 
     def valid?
       heroku_app && heroku_token && acme_email && domains.any? &&
-      (cloudflare_api_key || dyn_customer_name || route53_api_key)
+      (cloudflare_api_key || dyn_customer_name || route53_access_key_id)
     end
 
   end
