@@ -41,7 +41,7 @@ GEM
     platform-api (2.2.0)
       heroics (~> 0.0.25)
       moneta (~> 1.0.0)
-    rake (10.5.0)
+    rake (13.0.1)
     slack-notifier (2.3.2)
 
 PLATFORMS
@@ -50,7 +50,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   encryptbot!
-  rake (~> 10.0)
+  rake (~> 13.0)
 
 BUNDLED WITH
    1.17.2
