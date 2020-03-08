@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    encryptbot (0.1.6)
+    encryptbot (0.1.7)
       acme-client
       aws-sdk-route53
       faraday
@@ -11,11 +11,11 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    acme-client (2.0.5)
-      faraday (~> 0.9, >= 0.9.1)
+    acme-client (2.0.6)
+      faraday (>= 0.17, < 2.0.0)
     aws-eventstream (1.0.3)
-    aws-partitions (1.256.0)
-    aws-sdk-core (3.86.0)
+    aws-partitions (1.281.0)
+    aws-sdk-core (3.90.1)
       aws-eventstream (~> 1.0, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
@@ -23,11 +23,11 @@ GEM
     aws-sdk-route53 (1.30.0)
       aws-sdk-core (~> 3, >= 3.71.0)
       aws-sigv4 (~> 1.1)
-    aws-sigv4 (1.1.0)
+    aws-sigv4 (1.1.1)
       aws-eventstream (~> 1.0, >= 1.0.2)
     erubis (2.7.0)
-    excon (0.71.0)
-    faraday (0.17.1)
+    excon (0.72.0)
+    faraday (1.0.0)
       multipart-post (>= 1.2, < 3)
     heroics (0.0.25)
       erubis (~> 2.0)
@@ -41,7 +41,7 @@ GEM
     platform-api (2.2.0)
       heroics (~> 0.0.25)
       moneta (~> 1.0.0)
-    rake (10.5.0)
+    rake (13.0.1)
     slack-notifier (2.3.2)
 
 PLATFORMS
@@ -50,7 +50,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   encryptbot!
-  rake (~> 10.0)
+  rake (>= 12.3.3)
 
 BUNDLED WITH
    1.17.2
