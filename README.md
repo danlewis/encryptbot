@@ -5,9 +5,8 @@ Encryptbot creates and renews your Let's Encrypt SSL certificate on Heroku allow
 The gem will:
 
 - Create Let's Encrypt
-- Add Let's Encrypt DNS Challenge TXT records to your DNS provider (Cloudflare and Dyn supported)
+- Add Let's Encrypt DNS Challenge TXT records to DNS provider Route 53
 - Add certificate to your Heroku SNI endpoint
-- Send Slack notifications if the process fails.
 
 ## Installation
 
@@ -34,23 +33,12 @@ Add an initializer file to your rails application and all applicable config sett
 Encryptbot.configure do |config|
   config.heroku_app = "heroku_app_name"
   config.heroku_token = "heroku_api_token"
-  config.cloudflare_api_key = "cloudflare_api_key"
-  config.cloudflare_email = "cloudflare_account_email"
   config.acme_email = "letsencrypt_account_email"
-  config.dyn_customer_name = "dyn_customer_name"
-  config.dyn_username = "dyn_username"
-  config.dyn_password = "dyn_password"
-  config.slack_webhook = "slack_webhook_url"
-  config.slack_bot_username = "name_for_slack_bot"
   config.route53_hosted_zone_id = "Z123456"
   config.route53_acme_record_name = "_acme-challenge.acme.domain.com"
   config.route53_access_key_id = "aws_api_key"
   config.route53_secret_access_key = "aws_api_secret"
-  config.domains = [
-    {domain: "*.domain1.com", service: "cloudflare"},
-    {domain: "*.domain2.com", service: "dyn"},
-    {domain: "domain3.com", service: "cloudflare"},
-  ]
+  config.domains = ["*.domain1.com", "*.domain2.com"]
 end
 ```
 

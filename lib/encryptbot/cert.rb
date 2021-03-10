@@ -2,17 +2,15 @@ require "platform-api"
 require "acme-client"
 require "encryptbot/heroku"
 require "encryptbot/exceptions"
-require "encryptbot/slacker"
 require "resolv"
 
 module Encryptbot
   class Cert
 
-    attr_reader :domain_list, :domain_names, :account_email, :test_mode
+    attr_reader :domains, :account_email, :test_mode
 
     def initialize
-      @domain_list = Encryptbot.configuration.domains
-      @domain_names = @domain_list.map{|d| d[:domain] }
+      @domains = Encryptbot.configuration.domains
       @account_email = Encryptbot.configuration.acme_email
       @test_mode = Encryptbot.configuration.test_mode
     end
@@ -35,27 +33,22 @@ module Encryptbot
       )
 
       # create order
-      order = client.new_order(identifiers: @domain_names)
+      order = client.new_order(identifiers: @domains)
 
+      puts "Start Authorization"
       # authorization of domains
       order.authorizations.each do |authorization|
         dns_challenge = authorization.dns
         domain = authorization.domain
+        puts "Start Authorization of #{domain}"
         dns_entry = {
           name: dns_challenge.record_name,
           type: dns_challenge.record_type,
           content: dns_challenge.record_content
         }
-        case @domain_list.detect{|t| t[:domain].gsub("*.", "") == domain }[:service]
-        when "route53"
-          Encryptbot::Services::Route53.new(domain, dns_entry).add_challenge
-        when "cloudflare"
-          Encryptbot::Services::Cloudflare.new(domain, dns_entry).add_challenge
-        when "dyn"
-          Encryptbot::Services::Dyn.new(domain, dns_entry).add_challenge
-        else
-          raise Encryptbot::Error::UnknownServiceError, "#{domain} service unknown"
-        end
+
+        Encryptbot::Services::Route53.new(domain, dns_entry).add_challenge
+
         # check if the DNS service has updated
         sleep(8)
 
@@ -73,6 +66,7 @@ module Encryptbot
           sleep(2)
           dns_challenge.reload
         end
+        puts "Completed authorization of #{domain}. Status: #{dns_challenge.status}"
 
       end # end auth loop
 
@@ -81,14 +75,17 @@ module Encryptbot
       end
 
       # Generate certificate
+      puts "Generate Certificate"
       csr = Acme::Client::CertificateRequest.new(names: @domain_names)
       order.finalize(csr: csr)
       sleep(1) while order.status == "processing"
 
       # add certificate to heroku
+      puts "Adding Certificate to heroku"
       certificate = order.certificate
       private_key = csr.private_key.to_pem
       Encryptbot::Heroku.new.add_certificate(order.certificate, private_key)
+      puts "Completed"
     end
 
     # Check if TXT value has been set correctly

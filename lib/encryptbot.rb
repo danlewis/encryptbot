@@ -1,8 +1,6 @@
 require "encryptbot/configuration"
 require "encryptbot/cert"
 require "encryptbot/version"
-require "encryptbot/services/cloudflare"
-require "encryptbot/services/dyn"
 require "encryptbot/services/route53"
 
 if defined?(Rails)

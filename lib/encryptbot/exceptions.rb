@@ -1,12 +1,9 @@
-require "encryptbot/slacker"
-
 module Encryptbot
   module Error
 
     class EncryptbotError < StandardError
 
       def initialize(msg = "")
-        Encryptbot::Slacker.post_message("Unable to autorenew SSL certificate. #{self.class.name} #{msg}")
         super(msg)
       end
 
