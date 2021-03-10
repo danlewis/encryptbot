@@ -1,12 +1,11 @@
 PATH
   remote: .
   specs:
-    encryptbot (0.1.7)
+    encryptbot (0.1.8)
       acme-client
       aws-sdk-route53
       faraday
       platform-api
-      slack-notifier
 
 GEM
   remote: https://rubygems.org/
@@ -14,21 +13,24 @@ GEM
     acme-client (2.0.6)
       faraday (>= 0.17, < 2.0.0)
     aws-eventstream (1.0.3)
-    aws-partitions (1.281.0)
-    aws-sdk-core (3.90.1)
+    aws-partitions (1.292.0)
+    aws-sdk-core (3.92.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-route53 (1.30.0)
+    aws-sdk-route53 (1.32.0)
       aws-sdk-core (~> 3, >= 3.71.0)
       aws-sigv4 (~> 1.1)
     aws-sigv4 (1.1.1)
       aws-eventstream (~> 1.0, >= 1.0.2)
     erubis (2.7.0)
-    excon (0.72.0)
-    faraday (1.0.0)
+    excon (0.79.0)
+    faraday (1.3.0)
+      faraday-net_http (~> 1.0)
       multipart-post (>= 1.2, < 3)
+      ruby2_keywords
+    faraday-net_http (1.0.1)
     heroics (0.0.25)
       erubis (~> 2.0)
       excon
@@ -36,13 +38,13 @@ GEM
       multi_json (>= 1.9.2)
     jmespath (1.4.0)
     moneta (1.0.0)
-    multi_json (1.14.1)
+    multi_json (1.15.0)
     multipart-post (2.1.1)
     platform-api (2.2.0)
       heroics (~> 0.0.25)
       moneta (~> 1.0.0)
     rake (13.0.1)
-    slack-notifier (2.3.2)
+    ruby2_keywords (0.0.4)
 
 PLATFORMS
   ruby
