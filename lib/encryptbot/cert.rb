@@ -37,6 +37,7 @@ module Encryptbot
 
       puts "Start Authorization"
       # authorization of domains
+      failed_domain_authorizations = []
       order.authorizations.each do |authorization|
         dns_challenge = authorization.dns
         domain = authorization.domain
@@ -67,8 +68,14 @@ module Encryptbot
           dns_challenge.reload
         end
         puts "Completed authorization of #{domain}. Status: #{dns_challenge.status}"
-
+        if dns_challenge.status == 'invalid'
+          failed_domain_authorizations << domain
+        end
       end # end auth loop
+
+      if failed_domain_authorizations.any?
+        raise Encryptbot::Error::DomainAuthorizationFailedError, "Domains failed to authorize: #{failed_domain_authorizations.join(', ')}."
+      end
 
       if order.status == "invalid"
         raise Encryptbot::Error::InvalidOrderError, "Certificate order was invalid. DNS Challenge failed."
@@ -76,7 +83,7 @@ module Encryptbot
 
       # Generate certificate
       puts "Generate Certificate"
-      csr = Acme::Client::CertificateRequest.new(names: @domain_names)
+      csr = Acme::Client::CertificateRequest.new(names: @domains)
       order.finalize(csr: csr)
       sleep(1) while order.status == "processing"
 
