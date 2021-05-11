@@ -6,12 +6,12 @@ require "encryptbot/version"
 Gem::Specification.new do |spec|
   spec.name          = "encryptbot"
   spec.version       = Encryptbot::VERSION
-  spec.authors       = ["danlewis"]
+  spec.authors       = ["Adventist Media"]
   spec.email         = [""]
 
   spec.summary       = %q{Manage Let's Encrypt wildcard certificates on Heroku}
   spec.description   = %q{Manage Let's Encrypt wildcard certificates on Heroku}
-  spec.homepage      = "https://github.com/danlewis/encryptbot"
+  spec.homepage      = "https://github.com/adventistmedia/encryptbot"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
